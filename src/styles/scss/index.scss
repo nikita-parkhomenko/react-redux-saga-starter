@@ -1,0 +1,9 @@
+
+// override bootstrap variables here
+@import 'variables'; 
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// application styles
+@import 'extra';

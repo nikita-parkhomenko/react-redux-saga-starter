@@ -1,0 +1,30 @@
+// Common helpers
+
+ .transition { @include transition(all 250ms ease-in-out); }
+
+ .bg-transparent  { background-color: transparent !important; }
+ 
+ .text-nowrap { white-space: nowrap; }
+ 
+ // Background image
+ .bg-center {
+   background-size: cover;
+   background-position: center center;
+ }
+ .bg-contain {
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center center;
+ }
+ .bg-cover {
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+ }
+ // cursor
+ .cursor-move        { cursor: move !important; }
+ .cursor-grab        { cursor: grab !important; }
+ .cursor-no-drop     { cursor: no-drop !important; }
+ .cursor-pointer     { cursor: pointer !important; }
+ .cursor-grabbing    { cursor: grabbing !important; }
+ 

@@ -1,4 +1,3 @@
-
 // outsource dependencies
 import React from 'react';
 
@@ -6,7 +5,7 @@ import React from 'react';
 
 function App () {
   return <div className="App">
-      Hello
+    Hello
   </div>;
 }
 

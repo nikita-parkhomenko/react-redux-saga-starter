@@ -1,9 +1,13 @@
 
 // override bootstrap variables here
 @import 'variables'; 
+// override bootstrap mixins here
+@import 'mixins';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // additional custom styles
 @import 'extra';
+@import 'modules';
+@import 'components';

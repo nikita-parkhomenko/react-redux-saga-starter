@@ -1,0 +1,108 @@
+// @include box-shadow(#{"inset 5px 5px 5px rgba(255, 255, 255, 0.9)"});
+@mixin box-shadow-custom($props) {
+  -webkit-box-shadow: $props;
+  -moz-box-shadow:    $props;
+  box-shadow:         $props;
+}
+// @include rect-size(35px);
+@mixin rect-size($size) {
+  flex-basis: $size;
+  min-width: $size;
+  height: $size;
+  width: $size;
+}
+// @include transition( padding-top 0.5s ease );
+@mixin transition-custom ($transition) {
+  -webkit-transition: $transition;
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  transition:         $transition;
+}
+// @include user-selection( none );
+@mixin user-selection ( $select ) {
+  -webkit-touch-callout:  $select;
+  -webkit-user-select:    $select;
+  -moz-user-select:       $select;
+  -ms-user-select:        $select;
+  user-select:            $select;
+}
+
+@mixin transform ($transforms) {
+  -webkit-transform:  $transforms;
+  -moz-transform:     $transforms;
+  -o-transform:       $transforms;
+  -ms-transform:      $transforms;
+  transform:          $transforms;
+}
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+@mixin scale ($scale) {
+  @include transform(scale($scale));
+}
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin:   $origin;
+  -ms-transform-origin:       $origin;
+  -o-transform-origin:        $origin;
+  transform-origin:           $origin;
+}
+@mixin animation-delay ($delay) {
+  -webkit-animation-delay:    $delay;
+  -moz-animation-delay:       $delay;
+  -o-animation-delay:         $delay;
+  animation-delay:            $delay;
+}
+@mixin animation-ease ($name, $duration, $delay) {
+  @include animation($name, $duration, $delay, ease);
+}
+// @include keyframes(animation-name) {
+//   0% { transform: translate3d(-200%, 0, 0); }
+//   100% { transform: translate3d(0, 0, 0); }
+// }
+// .some-class {
+//  @include animation('270ms animation-name linear');
+// }
+@mixin animation ($name, $duration, $delay, $ease) {
+  -webkit-animation: $name $duration $delay $ease;
+  -moz-animation:    $name $duration $delay $ease;
+  animation:         $name $duration $delay $ease;
+}
+@mixin animation-simple ($animation) {
+  -webkit-animation: $animation;
+  -moz-animation:    $animation;
+  animation:         $animation;
+}
+@mixin keyframes ($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// NOTE general styles to add scrollbar
+@mixin scrollbar ($height, $bgColor) {
+  height: $height;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $bgColor;
+}
+
+
+@mixin backdrop-filter-blur ($value) {
+  -webkit-backdrop-filter: blur($value);
+  backdrop-filter: blur($value);
+}

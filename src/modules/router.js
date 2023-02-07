@@ -14,7 +14,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home />} />
     <Route path="student-profile/:id" element={<StudentProfile />} />
     {/* direct 404 */}
-    <Route path="/not-found" element={<NotFound />} />
+    <Route path="not-found" element={<NotFound />} />
     {/* as 404 */}
     <Route path="*" element={<NotFound />} />
   </Route>

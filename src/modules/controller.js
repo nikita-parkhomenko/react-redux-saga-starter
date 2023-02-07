@@ -10,7 +10,7 @@ import { silence, API } from '../services';
 import { USER_STATE, APP_TITLE, history } from '../constants';
 
 // configure
-const ACTIVATED_STATES = [USER_STATE.ACTIVE, USER_STATE.PENDING_ARTIST];
+const ACTIVATED_STATES = [USER_STATE.ACTIVE, USER_STATE.PENDING];
 
 export const appRootCtrl = create({
   prefix: 'app',
@@ -23,7 +23,7 @@ export const appRootCtrl = create({
   },
   initial: {
     initialized: false,             // prevent redirect from page and show instead current page - global preloader
-    health: true,                   // prevent redirect from page and show instead current page and it behavior - maintenance page
+    health: true,                   // prevent redirect from page and show instead current page and its behavior - maintenance page
     user: null,                     // logged user information
   },
   subscriber: function * () {

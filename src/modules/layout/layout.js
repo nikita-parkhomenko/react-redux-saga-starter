@@ -3,23 +3,28 @@
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
 // local dependencies
+import { Sidebar } from './sidebar';
 
 export const Layout = memo(function Layout ({ className }) {
-  return <div className={cn('layout', className)}>
-    <header className="bg-primary"> Header </header>
-    <main className="d-flex min-vh-100">
-      <aside className="bg-warning">
-        <nav className="btn-group-vertical">
-          <Link to="student-profile/:Nikita"> My profile </Link>
-          <Link to="/"> Home </Link>
-        </nav>
-      </aside>
-      <Outlet />
-    </main>
-  </div>;
+  return <Container fluid className={cn('layout px-0', className)}>
+    <Row>
+      <Col md={3} className="d-none d-md-block">
+        <Sidebar />
+      </Col>
+      <Col xs={12} md={9}>
+        <header className="shadow">
+          <h1> Header </h1>
+        </header>
+        <main className="d-flex">
+          <Outlet />
+        </main>
+      </Col>
+    </Row>
+  </Container>;
 });
 
 Layout.propTypes = {

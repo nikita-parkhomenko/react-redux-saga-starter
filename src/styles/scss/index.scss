@@ -1,8 +1,11 @@
 
 // override bootstrap variables here
-@import 'variables'; 
+@import 'variables';
 // override bootstrap mixins here
 @import 'mixins';
+
+// include fonts
+@import '../fonts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

@@ -149,8 +149,8 @@
       "patterns": ["import1/private/*", "import2/*", "!import2/good"]
     }],
     "max-len": ["error", {
-      "code": 120,
-      "comments": 120,
+      "code": 140,
+      "comments": 140,
       "tabWidth": 4,
       "ignoreUrls": true,
       "ignoreStrings": true,

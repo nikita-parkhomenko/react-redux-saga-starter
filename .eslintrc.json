@@ -26,7 +26,7 @@
     "console": true
   },
   "rules": {
-    "curly": ["warn", "all"],
+    "curly": ["error", "multi-line"],
     "eqeqeq": ["warn", "smart"],
     "radix": ["warn", "as-needed"],
     "no-console": ["warn", { "allow": ["error", "warn", "info"] }],

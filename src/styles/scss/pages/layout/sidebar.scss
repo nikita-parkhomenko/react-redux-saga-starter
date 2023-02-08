@@ -1,0 +1,10 @@
+.sidebar {
+  margin: 10px;
+  border: 1px solid #F5F5F5;
+  box-shadow: 0 3px 16px rgba(152, 132, 183, 0.05);
+  border-radius: 12px;
+
+  .logo {
+    @include rect-size(32px);
+  }
+}

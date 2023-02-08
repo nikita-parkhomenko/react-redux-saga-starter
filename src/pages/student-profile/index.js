@@ -7,8 +7,8 @@ import React, { memo } from 'react';
 // local dependencies
 
 export const StudentProfile = memo(function StudentProfile ({ className }) {
-  return <div className={cn('', className)}>
-    <h1> StudentProfile </h1>
+  return <div id="StudentProfile" className={cn('student-profile', className)}>
+    <h1> Student Profile </h1>
   </div>;
 });
 

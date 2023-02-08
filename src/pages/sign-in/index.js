@@ -5,15 +5,15 @@ import React, { memo } from 'react';
 
 // local dependencies
 
-export const Sidebar = memo(function Sidebar ({ className }) {
-  return <aside className={cn('sidebar', className)}>
-    <h1> Sidebar </h1>
-  </aside>;
+export const SignIn = memo(function SignIn ({ className }) {
+  return <div id="SignIn" className={cn('sign-in', className)}>
+    <h1> Sign In </h1>
+  </div>;
 });
 
-Sidebar.propTypes = {
+SignIn.propTypes = {
   className: PropTypes.string,
 };
-Sidebar.defaultProps = {
+SignIn.defaultProps = {
   className: '',
 };

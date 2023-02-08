@@ -3,9 +3,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 // local dependencies
-import { AppRoot } from './modules';
+import { AppRoot } from './pages';
 import { store } from './constants';
 
 // import styles
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AppRoot />
+      <ProSidebarProvider>
+        <AppRoot />
+      </ProSidebarProvider>
     </Provider>
   </React.StrictMode>
 );

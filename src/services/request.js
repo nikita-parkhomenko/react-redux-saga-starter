@@ -5,7 +5,7 @@ import _ from 'lodash';
 import axios from 'axios';
 
 // local dependencies
-import { config } from '../constants/internal-config';
+import { config } from '../constants';
 import { AccessTokenStorage, RefreshTokenStorage } from './storage';
 
 const AUTH_HEADER = 'Authorization';
@@ -43,7 +43,7 @@ const restoreSessionFromStore = () => !hasStoredSession()
   : ([API, API_BROKER].map(API => API.defaults.headers[AUTH_HEADER] = getAuthHeader()));
 
 /**
- * provide correct way to setup authorization session
+ * provide correct way to set up authorization session
  *
  * @param {Session} [session=null] to kill session within instanceAPI
  */
@@ -152,7 +152,7 @@ API_BROKER.interceptors.response.use(
  */
 let isRefreshing = false, stuckRequests = [];
 /**
- * store all requests with 401 refresh session and try send request again
+ * store all requests with 401 refresh session and try to send request again
  *
  * @param {Object} error
  * @return {Promise}
@@ -206,7 +206,7 @@ const handleRefreshSession = error => {
  * @return {*}
  */
 const onAuthFailApplicationAction = fn => authFail = fn;
-let authFail = error => console.warn('authorization is fail. Expected to override this action');
+let authFail = error => console.warn('authorization is fail. Expected to override this action', error);
 /**
  * checking API health state
  */
@@ -248,7 +248,7 @@ const signOut = () => {
   return API({ url: '/TODO', method: 'GET' });
 };
 /**
- * Restoring previously logged in user from local storage if it was
+ * Restoring previously logged-in user from local storage if it was
  */
 const restoreUserFromStore = () => {
   if (hasStoredSession()) {

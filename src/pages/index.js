@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router-dom';
 import { useController } from 'redux-saga-controller';
 
 // local dependencies
-import { router } from './router';
+import { router } from '../navigation';
 import { appRootCtrl } from './controller';
 import { Preloader, Maintenance } from '../components';
 
@@ -20,8 +20,8 @@ export const AppRoot = memo(function AppRoot () {
   useEffect(() => { initialize({}); }, [initialize]);
 
   // NOTE select view based on application state
-  if (!health) { return <Maintenance />; }
-  if (!initialized) { return <Preloader active />; }
+  if (!health) return <Maintenance />;
+  if (!initialized) return <Preloader active />;
 
   return <>
     <RouterProvider router={router} />

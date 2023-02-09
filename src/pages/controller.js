@@ -41,7 +41,7 @@ function * initializeSaga ({ type, payload }) {
     yield delay(400);
     // NOTE: check health of API
     const { status } = yield call(API, { method: 'GET', url: '/actuator/health' });
-    if (status !== 'UP') { throw new Error('API down for maintenance'); }
+    if (status !== 'UP') throw new Error('API down for maintenance');
     yield put(appRootCtrl.action.updateCtrl({ health: true }));
   } catch ({ message: error1 }) {
     yield put(appRootCtrl.action.updateCtrl({ health: false }));

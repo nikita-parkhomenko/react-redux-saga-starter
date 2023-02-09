@@ -8,7 +8,7 @@ import { Sidebar as SidebarPro, Menu, MenuItem, useProSidebar } from 'react-pro-
 
 // local dependencies
 import { AppLogo } from '../../assets';
-import { HamburgerIcon } from '../../components';
+import { EyeIcon } from '../../components';
 import * as ROUTE from '../../navigation/constants';
 
 export const Sidebar = memo(function Sidebar ({ className }) {
@@ -24,14 +24,14 @@ export const Sidebar = memo(function Sidebar ({ className }) {
         <h2 className="mb-0 fw-bold"> Djema </h2>
       </div>
       <Button color="transparent" className="border-0 text-center" onClick={() => collapseSidebar()}>
-        <HamburgerIcon size="2x" className="text-dark" />
+        <EyeIcon size="2x"/>
       </Button>
     </div>
     <Menu>
-      <MenuItem icon={<HamburgerIcon size="2x" />} component={<Link to={ROUTE.DASHBOARD} />}>
+      <MenuItem icon={<EyeIcon size="2x" />} component={<Link to={ROUTE.DASHBOARD} />}>
         Dashboard
       </MenuItem >
-      <MenuItem icon={<HamburgerIcon size="2x" />} component={<Link to={ROUTE.STUDENT_PROFILE} />}>
+      <MenuItem icon={<EyeIcon size="2x" />} component={<Link to={ROUTE.STUDENT_PROFILE} />}>
         My profile
       </MenuItem>
     </Menu>

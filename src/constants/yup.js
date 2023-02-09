@@ -1,70 +1,6 @@
 
 // outsource dependencies
-import _ from 'lodash';
 import * as yup from 'yup';
-
-// local dependencies
-import { config } from './internal-config';
-
-// configure
-const OPT = { abortEarly: false, recursive: true };
-
-/**
- * convert yup schema to redux-form sync validator
- * @param {YupSchema} schema
- * @return {function(*=): {}}
- */
-export const createYupSyncValidator = schema => values => {
-  try {
-    schema.validateSync(values, OPT);
-  } catch (error) {
-    return convertYupErrorsToReduxFormSchema(error);
-  }
-  return {};
-};
-
-/**
- * convert yup schema to redux-form async validator
- * @param {YupSchema} schema
- * @return {function(*=): {}}
- */
-export const createYupAsyncValidator = schema => async values => await schema
-  .validate(values, OPT)
-  .then(() => {})
-  .catch(convertYupErrorsToReduxFormSchema);
-
-/**
- * convert throwing yup errors to simple redux form object with schema of validation messages
- * @private
- */
-const convertYupErrorsToReduxFormSchema = error => {
-  // NOTE most simple way to know the yup was thrown ¯\_(ツ)_/¯
-  if (_.get(error, 'name') !== 'ValidationError') {
-    return config('DEBUG', false)
-      && console.info('%c YUP Failed to validate ', 'color: #FF6766; font-weight: bolder; font-size: 16px;'
-        , '\n name', _.get(error, 'name')
-        , '\n message', _.get(error, 'message')
-      );
-  }
-  const inner = _.get(error, 'inner');
-  const result = {};
-  _.map(inner, nestedError => {
-    const path = _.get(nestedError, 'path');
-    const inner = _.get(nestedError, 'inner');
-    let message = _.get(nestedError, 'message');
-    // NOTE allow deep form schema
-    if (_.size(inner)) {
-      message = convertYupErrorsToReduxFormSchema(nestedError);
-    }
-    _.set(result, path, message);
-    // console.log('%c convertYupErrorsToReduxFormSchema ', 'color: blue; font-weight: bolder; font-size: 12px;'
-    //   , '\n inner:', inner
-    //   , '\n path:', path
-    //   , '\n message:', message
-    // );
-  });
-  return result;
-};
 
 /*******************************************************************
  *        Predefined reusable validators
@@ -92,7 +28,7 @@ const EMAIL = STRING.email('Please type valid email');
 // eslint-disable-next-line no-useless-escape,max-len
 export const urlRegExp = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w\-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
 const URL = STRING.matches(urlRegExp, 'Please enter correct website url');
-// NOTE allowed only youtube and facebook
+// NOTE allowed only YouTube and facebook
 const youtubeRed = 'https://youtu.be/';
 const youtube = 'https://www.youtube.com/';
 const facebook = 'https://www.facebook.com/publicfr/videos'; // NOTE public videos only

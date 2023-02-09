@@ -26,4 +26,4 @@ function create (src, name) {
   return Icon;
 }
 
-export const HamburgerIcon = create(app, 'hamburger');
+export const EyeIcon = create(app, 'eye');
